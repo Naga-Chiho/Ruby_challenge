@@ -26,6 +26,8 @@ CSV.foreach("personal_infomation.csv" , headers: true) do |row|
   people << person  
 end
 
+# p people 
+
 people.each do |person|
   puts person[:name]
 end

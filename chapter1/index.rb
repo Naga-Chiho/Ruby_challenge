@@ -22,7 +22,7 @@ CSV.foreach("personal_infomation.csv" , headers: true) do |row|
   birthday: row["tanjobi"]
 }
 
-  # 配列に追加
+  # 配列に追加。<<演算子で配列の末尾に追加できる！
   people << person  
 end
 

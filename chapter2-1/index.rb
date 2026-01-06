@@ -68,7 +68,7 @@ end
 people = [] 
 
 # csvファイルを1行ずつ読み込み
-CSV.foreach("personal_infomation.csv", headers: true) do |row|
+CSV.foreach("../personal_infomation.csv", headers: true) do |row|
   # オブジェクトを作成！CSVファイルの各列をあてはめていく！
   person = Person.new(
     row["no"], row["namae"], row["rubi"], row["seibetu"], row["denwa"],

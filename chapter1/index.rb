@@ -4,7 +4,7 @@ require 'csv'
 people = [] 
 
 # csvファイルを1行ずつ読み込み
-CSV.foreach("personal_infomation.csv" , headers: true) do |row|
+CSV.foreach("../personal_infomation.csv" , headers: true) do |row|
   person = {
   id: row["no"],
   name: row["namae"],

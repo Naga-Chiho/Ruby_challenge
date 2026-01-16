@@ -1,5 +1,5 @@
 require 'csv'
-require './person.rb'
+require './personClass.rb'
 
 # 配列を作成
 people = []
@@ -25,6 +25,8 @@ CSV.foreach("../personal_infomation.csv", headers: true) do |row|
   people << person
 end
 
-people.each do |person|
-  puts person.name
+people.each do |person|      
+  puts person.name      
+  puts person.address      
+  puts person.age  
 end

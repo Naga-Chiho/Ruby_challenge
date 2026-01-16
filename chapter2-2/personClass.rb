@@ -25,7 +25,7 @@ class Person
 
   def address
     # nilガード
-    (address1 ||= '') + (address2 ||= '') + (address3 ||= '') + (address4 ||= '') + (address5 ||= '')
+    (address1) + (address2) + (address3) + (address4) + (address5 ||= '')
   end
 
   # メゾットを用意

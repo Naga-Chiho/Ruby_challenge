@@ -1,4 +1,4 @@
-require "date"
+require "time"
 
 # クラスを作成
 class Person
@@ -24,29 +24,24 @@ class Person
   end
 
   def address
-    # nilガード
-    (address1) + (address2) + (address3) + (address4) + (address5 ||= '')
+    "#{address1}#{address2}#{address3}#{address4}#{address5}"
   end
 
-  # メゾットを用意
   def age
     # 誕生日を日付データにしている
-    birthday_date = Date.parse(@birthday)
+    birthday_date = Time.parse(@birthday)
     # 今日の日付データ
-    today = Date.today
+    today = Time.now
+    # 今年の誕生日データ
+    this_years_birthday = Time.local(today.year, birthday_date.month, birthday_date.day)
 
-    # 計算(誕生日が来てなくても一旦引き算)
-    age_year = today.year - birthday_date.year
+    age = today.year - birthday_date.year
 
-    if (today.month < birthday_date.month)
-      age_year = age_year - 1
-    else 
-      if(today.day < birthday_date.day)
-        age_year = age_year - 1
-      end
+    if today < this_years_birthday
+      age -= 1
     end
 
-    age_year
+    age
   end
 
 end

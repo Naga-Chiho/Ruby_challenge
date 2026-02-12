@@ -1,0 +1,51 @@
+require 'csv'
+require './personClass.rb'
+
+# 配列を作成
+people = []
+
+# ハッシュ
+people_csv = {}
+
+
+# csvファイルを1行ずつ読み込み
+CSV.foreach("../personal_infomation.csv", headers: true) do |row|
+  person = Person.new(
+    row["no"], 
+    row["namae"], 
+    row["rubi"], 
+    row["seibetu"], 
+    row["denwa"],
+    row["keitai"], 
+    row["mairu"], 
+    row["yuubinbango"], 
+    row["jusho1"], 
+    row["jusho2"],
+    row["jusho3"], 
+    row["jusho4"], 
+    row["jusho5"], 
+    row["tanjobi"]
+  )
+  people << person
+
+  if people_csv[person.address1].nil?
+    people_csv[person.address1] = [person.age]
+  else
+    people_csv[person.address1] << person.age
+  end
+
+  average_person_csv = {}
+
+  people_csv.each do |prefecture, ages|
+    avg = ages.inject(:+) / ages.length
+    average_person_csv[prefecture] = avg
+  end
+
+  CSV.open("average_person_csv", "w") do |file|
+    average_person_csv.each do |prefecture, avg|
+      file << [prefecture, avg]
+    end
+  end
+end
+
+

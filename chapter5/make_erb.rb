@@ -1,5 +1,6 @@
 require 'csv'
 require './personClass.rb'
+require "erb"
 
 # 配列を作成
 people = []
@@ -44,10 +45,8 @@ people_csv.each do |prefecture, ages|
   average_person_csv[prefecture] = avg
 end
 
-CSV.open("average_person_csv", "w") do |file|
-  average_person_csv.each do |prefecture, avg|
-    file << [prefecture, avg]
-  end
+template = File.read("table.erb")
+
+File.open("table.html", "w") do |file|
+  file.write(ERB.new(template).result(binding))
 end
-
-

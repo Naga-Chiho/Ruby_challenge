@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <table border="1">
+    <tr>
+      <th>都道府県</th>
+      <th>平均年齢</th>
+    </tr>
+
+    <% average_person_csv.each do |prefecture, avg| %>
+      <tr>
+        <td><%= prefecture %></td>
+        <td><%= avg %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</body>
+</html>
+

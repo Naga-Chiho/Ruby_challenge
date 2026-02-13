@@ -27,24 +27,26 @@ CSV.foreach("../personal_infomation.csv", headers: true) do |row|
     row["tanjobi"]
   )
   people << person
+end
 
+people.each do |person|
   if people_csv[person.address1].nil?
     people_csv[person.address1] = [person.age]
   else
     people_csv[person.address1] << person.age
   end
+end
 
-  average_person_csv = {}
+average_person_csv = {}
 
-  people_csv.each do |prefecture, ages|
-    avg = ages.inject(:+) / ages.length
-    average_person_csv[prefecture] = avg
-  end
+people_csv.each do |prefecture, ages|
+  avg = ages.inject(:+) / ages.length
+  average_person_csv[prefecture] = avg
+end
 
-  CSV.open("average_person_csv", "w") do |file|
-    average_person_csv.each do |prefecture, avg|
-      file << [prefecture, avg]
-    end
+CSV.open("average_person_csv", "w") do |file|
+  average_person_csv.each do |prefecture, avg|
+    file << [prefecture, avg]
   end
 end
 

@@ -41,7 +41,7 @@ end
 average_person_csv = {}
 
 people_csv.each do |prefecture, ages|
-  avg = ages.inject(:+) / ages.length
+  avg = ages.sum / ages.length
   average_person_csv[prefecture] = avg
 end
 

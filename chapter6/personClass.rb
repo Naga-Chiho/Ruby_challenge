@@ -34,7 +34,7 @@ class Person
     age -= 1 if today < this_years_birthday
 
     if age < 18
-      raise AgeError
+      raise AgeError.new("18歳未満のユーザーです。")
     end
 
     age

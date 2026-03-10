@@ -1,6 +1,5 @@
 require 'csv'
 require './personClass.rb'
-require "erb"
 
 people = []
 
@@ -28,8 +27,8 @@ end
 people.each do |person|
   begin
     puts "#{person.name}: #{person.age}歳"
-  rescue AgeError
-    puts "エラーが発生しました"
+  rescue AgeError => error
+    puts error.message
   end
 end
 

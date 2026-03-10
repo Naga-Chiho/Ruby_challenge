@@ -27,7 +27,7 @@ end
 people.each do |person|
   begin
     puts "#{person.name}: #{person.age}歳"
-  rescue AgeError => error
+  rescue AgeValidationError => error
     puts error.message
   end
 end

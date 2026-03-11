@@ -13,8 +13,10 @@ end
 contents = Nokogiri::HTML.parse(html,nil,charset)
 
 contents.xpath("//img").each do |img|
-  src = url + img.attribute('src').value.to_s
+  src = img.attribute('src').value.to_s
+  src = (url + src).to_s
   if src.end_with?("img_sightseeing.jpg")
-    puts url + src
+    File.write('./img_sightseeing.jpg', URI.open(src).read)
+    puts "ダウンロードが完了しました."
   end
 end
